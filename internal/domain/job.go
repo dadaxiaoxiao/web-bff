@@ -20,9 +20,6 @@ type Job struct {
 
 	// cron 表达式
 	Cron string
-
-	// 提供释放方法
-	CancelFunc func() error
 }
 
 var parser = cron.NewParser(cron.Second | cron.Minute | cron.Hour |

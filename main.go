@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
@@ -13,6 +14,10 @@ func main() {
 	// initViperRemote()
 
 	initPrometheus()
+	app := InitApp()
+	go func() {
+		_ = app.Scheduler.Schedule(context.Background())
+	}()
 }
 
 func initViper() {

@@ -22,3 +22,13 @@ remoteProvider:
   provider: "etcd3"
   endpoint: "http://127.0.0.1:12379"
   path: "/web_bff"
+
+
+grpc:
+  server:
+    port: 8010
+    etcdTTL: 60
+  client:
+    cronjob:
+      target: "etcd:///service/cronjob"
+      secure: false
